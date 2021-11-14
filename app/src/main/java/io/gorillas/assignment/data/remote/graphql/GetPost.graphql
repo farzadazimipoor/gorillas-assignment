@@ -1,5 +1,5 @@
-query {
-    post(id: 1) {
+query($id:ID!) {
+    post(id: $id) {
         id
         title
         body
