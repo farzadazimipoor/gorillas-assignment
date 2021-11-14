@@ -46,6 +46,11 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
+    // LifeCycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
     // Apollo GraphQL Client
     implementation "com.apollographql.apollo:apollo-runtime:2.5.11"
     implementation "com.apollographql.apollo:apollo-coroutines-support:2.5.11"
