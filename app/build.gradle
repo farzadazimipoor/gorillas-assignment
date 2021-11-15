@@ -54,6 +54,11 @@ dependencies {
     // Paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
+    // Navigation
+    implementation "androidx.navigation:navigation-runtime-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
     // Apollo GraphQL Client
     implementation "com.apollographql.apollo:apollo-runtime:2.5.11"
     implementation "com.apollographql.apollo:apollo-coroutines-support:2.5.11"
