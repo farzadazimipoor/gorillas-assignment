@@ -1,10 +1,11 @@
 package io.gorillas.assignment.domain.repository
 
-import io.gorillas.assignment.GetAllPostsQuery
-import io.gorillas.assignment.GetPostQuery
-import io.gorillas.assignment.type.PageQueryOptions
+import androidx.paging.PagingData
+import io.gorillas.assignment.domain.model.PostDetailModel
+import io.gorillas.assignment.domain.model.PostModel
+import kotlinx.coroutines.flow.Flow
 
 interface PostRepository {
-    suspend fun getAllPosts(options: PageQueryOptions): GetAllPostsQuery.Data?
-    suspend fun getPost(id: String): GetPostQuery.Data?
+    fun getAllPosts(query: String, limit: Int): Flow<PagingData<PostModel>>
+    suspend fun getPost(id: String): PostDetailModel
 }
