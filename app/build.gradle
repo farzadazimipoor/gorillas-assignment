@@ -51,6 +51,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
     // Apollo GraphQL Client
     implementation "com.apollographql.apollo:apollo-runtime:2.5.11"
     implementation "com.apollographql.apollo:apollo-coroutines-support:2.5.11"
