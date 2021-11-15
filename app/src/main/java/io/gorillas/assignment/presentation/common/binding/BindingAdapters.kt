@@ -1,0 +1,18 @@
+package io.gorillas.assignment.presentation.common.binding
+
+import android.view.View
+import androidx.databinding.BindingAdapter
+
+object BindingAdapters {
+    @JvmStatic
+    @BindingAdapter("visibleGone")
+    fun showHide(view: View, show: Boolean) {
+        view.visibility = if (show) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("isEnabled")
+    fun disableEnable(view: View, isEnabled: Boolean) {
+        view.isEnabled = isEnabled
+    }
+}
