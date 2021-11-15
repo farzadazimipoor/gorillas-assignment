@@ -27,7 +27,7 @@ class MainActivity : BaseActivity() {
     private fun initGetPostObserver() {
         viewModel.postResult.observe(this, {
             if (it.status == LoadingStatus.SUCCESS) {
-                Toast.makeText(this, it.data?.post?.title ?: "Empty", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, it.data?.title ?: "Empty", Toast.LENGTH_LONG).show()
             }
         })
     }
