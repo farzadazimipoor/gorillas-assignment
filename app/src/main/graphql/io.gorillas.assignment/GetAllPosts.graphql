@@ -3,6 +3,7 @@ query GetAllPosts($options: PageQueryOptions) {
         data {
             id
             title
+            body
         }
         meta {
             totalCount

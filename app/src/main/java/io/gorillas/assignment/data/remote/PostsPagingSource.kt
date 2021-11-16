@@ -33,13 +33,13 @@ class PostsPagingSource(
             var posts = listOf<PostModel>()
 
             if (response?.posts?.data != null) {
-                posts = response.posts.data.map { x -> PostModel(x?.id ?: "", x?.title ?: "") }
+                posts = response.posts.data.map { x -> PostModel(x?.id ?: "", x?.title ?: "", x?.body ?: "") }
             }
 
             return LoadResult.Page(
                 data = posts,
                 prevKey = null,
-                nextKey = nextPageNumber
+                nextKey = nextPageNumber + 1
             )
         } catch (e: IOException) {
             return LoadResult.Error(e)

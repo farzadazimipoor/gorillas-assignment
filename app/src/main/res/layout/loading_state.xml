@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="io.gorillas.assignment.common.helpers.Resource" />
+
+        <import type="io.gorillas.assignment.common.enums.LoadingStatus" />
+
+        <variable
+            name="resource"
+            type="io.gorillas.assignment.common.helpers.Resource" />
+
+        <variable
+            name="callback"
+            type="io.gorillas.assignment.common.RetryCallback" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:visibleGone="@{resource.data == null}"
+        tools:visibility="gone">
+
+        <TextView
+            android:id="@+id/error_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/error"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:visibleGone="@{resource.status == LoadingStatus.ERROR}"
+            tools:text="This is error title" />
+
+        <TextView
+            android:id="@+id/error_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@{resource.message ?? @string/unknown_error}"
+            android:textSize="12sp"
+            app:visibleGone="@{resource.status == LoadingStatus.ERROR}"
+            tools:text="Error Message" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:visibleGone="@{resource.status == LoadingStatus.LOADING}" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/retry"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> callback.retry()}"
+            android:text="@string/retry"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/purple_700"
+            app:visibleGone="@{resource.status == LoadingStatus.ERROR}" />
+
+    </LinearLayout>
+</layout>
+
