@@ -17,7 +17,9 @@ class PostRepositoryImpl @Inject constructor(
     private val apolloClient: ApolloClient
 ) : PostRepository {
     override fun getAllPosts(query: String, limit: Int): Flow<PagingData<PostModel>> {
-        val flow = Pager(PagingConfig(pageSize = limit)) {
+        val flow = Pager(
+            config =  PagingConfig(pageSize = limit)
+        ) {
             PostsPagingSource(apolloClient = apolloClient, query = query)
         }.flow
         return flow

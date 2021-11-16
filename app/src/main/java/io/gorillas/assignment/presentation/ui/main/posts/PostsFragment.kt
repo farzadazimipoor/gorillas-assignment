@@ -16,6 +16,7 @@ import io.gorillas.assignment.databinding.FargmentPostsBinding
 import io.gorillas.assignment.di.Injectable
 import io.gorillas.assignment.presentation.adapters.PostsListAdapter
 import io.gorillas.assignment.presentation.adapters.PostsListLoadStateAdapter
+import io.gorillas.assignment.presentation.common.asMergedLoadStates
 import io.gorillas.assignment.presentation.common.binding.FragmentDataBindingComponent
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
@@ -80,6 +81,7 @@ class PostsFragment : Fragment(), Injectable {
 
         lifecycleScope.launchWhenCreated {
             adapter.loadStateFlow
+                .asMergedLoadStates()
                 .distinctUntilChangedBy { it.refresh }
                 .filter { it.refresh is LoadState.NotLoading }
                 .collect { binding.list.scrollToPosition(0) }
