@@ -9,6 +9,7 @@ import io.gorillas.assignment.GetPostQuery
 import io.gorillas.assignment.data.remote.PostsPagingSource
 import io.gorillas.assignment.domain.model.PostDetailModel
 import io.gorillas.assignment.domain.model.PostModel
+import io.gorillas.assignment.domain.model.UserModel
 import io.gorillas.assignment.domain.repository.PostRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -18,7 +19,7 @@ class PostRepositoryImpl @Inject constructor(
 ) : PostRepository {
     override fun getAllPosts(query: String, limit: Int): Flow<PagingData<PostModel>> {
         val flow = Pager(
-            config =  PagingConfig(pageSize = limit)
+            config = PagingConfig(pageSize = limit)
         ) {
             PostsPagingSource(apolloClient = apolloClient, query = query)
         }.flow
@@ -31,6 +32,10 @@ class PostRepositoryImpl @Inject constructor(
             id = response?.post?.id ?: "",
             title = response?.post?.title ?: "",
             body = response?.post?.body ?: "",
+            user = UserModel(
+                name = response?.post?.user?.name ?: "",
+                username = response?.post?.user?.username ?: ""
+            )
         )
     }
 }

@@ -45,6 +45,8 @@ class PostsFragment : Fragment(), Injectable {
             false,
             dataBindingComponent
         )
+        val toolbar = binding.toolbar
+        (activity as MainActivity).setSupportActionBar(toolbar)
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         return binding.root
     }
@@ -76,7 +78,7 @@ class PostsFragment : Fragment(), Injectable {
         }
 
         lifecycleScope.launchWhenCreated {
-            viewModel.challenges.collectLatest {
+            viewModel.posts.collectLatest {
                 adapter.submitData(it)
             }
         }

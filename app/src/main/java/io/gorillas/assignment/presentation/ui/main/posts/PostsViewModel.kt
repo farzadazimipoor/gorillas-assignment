@@ -21,7 +21,7 @@ class PostsViewModel @Inject constructor(
     private val clearListCh = Channel<Unit>(Channel.CONFLATED)
 
     @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
-    val challenges = flowOf(clearListCh.receiveAsFlow().map { PagingData.empty() }, _query
+    val posts = flowOf(clearListCh.receiveAsFlow().map { PagingData.empty() }, _query
         .asFlow()
         .flatMapLatest { postRepository.getAllPosts(it, 10) }
         .cachedIn(viewModelScope)

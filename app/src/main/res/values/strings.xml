@@ -4,4 +4,6 @@
     <string name="error">Error!</string>
     <string name="unknown_error">Unknown Error Occurred!</string>
     <string name="title_description">Description</string>
+    <string name="posts">Posts</string>
+    <string name="post_detail">Post Detail</string>
 </resources>
