@@ -18,6 +18,7 @@ import io.gorillas.assignment.presentation.adapters.PostsListAdapter
 import io.gorillas.assignment.presentation.adapters.PostsListLoadStateAdapter
 import io.gorillas.assignment.presentation.common.asMergedLoadStates
 import io.gorillas.assignment.presentation.common.binding.FragmentDataBindingComponent
+import io.gorillas.assignment.presentation.ui.main.MainActivity
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -44,6 +45,7 @@ class PostsFragment : Fragment(), Injectable {
             false,
             dataBindingComponent
         )
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         return binding.root
     }
 

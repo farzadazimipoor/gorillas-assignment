@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -13,6 +15,7 @@ import io.gorillas.assignment.common.enums.LoadingStatus
 import io.gorillas.assignment.databinding.FragmentPostDetailBinding
 import io.gorillas.assignment.di.Injectable
 import io.gorillas.assignment.presentation.common.binding.FragmentDataBindingComponent
+import io.gorillas.assignment.presentation.ui.main.MainActivity
 import javax.inject.Inject
 
 class PostDetailFragment : Fragment(), Injectable {
@@ -40,6 +43,9 @@ class PostDetailFragment : Fragment(), Injectable {
             false,
             dataBindingComponent
         )
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val toolbar = activity!!.findViewById<Toolbar>(R.id.toolbar)
+        toolbar.findViewById<TextView>(R.id.txtToolbarTitle).text = "Post Details"
         return binding.root
     }
 
