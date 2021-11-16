@@ -30,7 +30,7 @@ class PostsPagingSource(
 
             val response = apolloClient.query(GetAllPostsQuery(Input.optional(queryOptions))).await().data
 
-            var posts = listOf<PostModel>()
+            var posts: List<PostModel> = listOf()
 
             if (response?.posts?.data != null) {
                 posts = response.posts.data.map { x -> PostModel(x?.id ?: "", x?.title ?: "", x?.body ?: "") }

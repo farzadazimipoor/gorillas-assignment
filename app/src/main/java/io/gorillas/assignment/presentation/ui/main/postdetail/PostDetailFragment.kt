@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import io.gorillas.assignment.R
+import io.gorillas.assignment.common.enums.LoadingStatus
 import io.gorillas.assignment.databinding.FragmentPostDetailBinding
 import io.gorillas.assignment.di.Injectable
 import io.gorillas.assignment.presentation.common.binding.FragmentDataBindingComponent
@@ -46,16 +47,19 @@ class PostDetailFragment : Fragment(), Injectable {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(PostDetailViewModel::class.java)
 
-        binding.txtTest.text = postId ?: "No Received"
-
         initPostDetailsObserver()
 
-        fetchPostDetails("1")
+        postId?.let {
+            fetchPostDetails(it)
+        }
     }
 
     private fun initPostDetailsObserver() {
         viewModel.postResult.observe(this, {
-
+            binding.resource = it
+            if (it.status == LoadingStatus.SUCCESS) {
+                binding.model = it.data
+            }
         })
     }
 
