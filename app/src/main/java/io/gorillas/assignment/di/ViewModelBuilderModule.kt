@@ -8,6 +8,8 @@ import dagger.multibindings.IntoMap
 import io.gorillas.assignment.common.annotation.ViewModelKey
 import io.gorillas.assignment.common.helpers.ViewModelFactory
 import io.gorillas.assignment.presentation.ui.main.MainViewModel
+import io.gorillas.assignment.presentation.ui.main.postdetail.PostDetailViewModel
+import io.gorillas.assignment.presentation.ui.main.posts.PostsViewModel
 
 @Module
 abstract class ViewModelBuilderModule {
@@ -18,4 +20,14 @@ abstract class ViewModelBuilderModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PostsViewModel::class)
+    abstract fun bindPostsViewModel(postsViewModel: PostsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PostDetailViewModel::class)
+    abstract fun bindPostDetailViewModel(postDetailViewModel: PostDetailViewModel): ViewModel
 }
